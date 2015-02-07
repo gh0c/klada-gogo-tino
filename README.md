@@ -1,5 +1,5 @@
 
-# Ruby on Rails Tutorial: Kladara
+# Ruby on Rails Tutorial: Kladara v2
 
 =======
 # klada-gogo-tino
