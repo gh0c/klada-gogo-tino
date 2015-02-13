@@ -158,6 +158,9 @@ aside {
   background-position: center;
   position: relative;
   margin: 0 auto;
+  &.avatar-size-30 {
+    height: 30px;
+  }
   &.avatar-size-50 {
     height: 50px;
   }
@@ -169,6 +172,11 @@ aside {
   }
 }
 
+
+.navbar-nav > li > a.header-avatar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 .user_avatars {
   overflow: auto;
