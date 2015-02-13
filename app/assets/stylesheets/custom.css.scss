@@ -152,6 +152,52 @@ aside {
   margin-right: 10px;
 }
 
+.avatar {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  margin: 0 auto;
+  &.avatar-size-50 {
+    height: 50px;
+  }
+  &.avatar-size-60 {
+    height: 60px;
+  }
+  &.avatar-size-80 {
+    height: 80px;
+  }
+}
+
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .avatar {
+    margin: 1px 1px;
+    &.avatar-size-10 {
+      height: 10px;
+    }
+    &.avatar-size-20 {
+      height: 20px;
+    }
+    &.avatar-size-30 {
+      height: 30px;
+    }
+    &.avatar-size-40 {
+      height: 40px;
+    }
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
+
 .gravatar_edit {
   margin-top: 15px;
 }
