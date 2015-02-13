@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   attr_accessor :remember_token
   before_save   :downcase_email
+  
+  mount_uploader :picture, PictureUploader
 
   
   validates :name,  presence: true, length: { maximum: 50 }
@@ -11,6 +13,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
+  validate  :picture_size
   
   attr_accessor :remember_token
   
@@ -43,9 +46,23 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
   
+  
+  # Defines a proto-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+  
   private
     def downcase_email
       self.email = email.downcase
+    end
+    
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
     end
 
 end
