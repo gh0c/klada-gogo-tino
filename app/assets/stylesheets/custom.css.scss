@@ -13,6 +13,12 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+@mixin box_shadow ($a, $b, $c, $d, $color) {
+  -webkit-box-shadow: $a $b $c $d $color;
+  -moz-box-shadow: $a $b $c $d $color;
+  box-shadow:  $a $b $c $d $color;
+}
+
 /* universal */
 
 html {
@@ -20,7 +26,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 52px;
 }
 
 section {
@@ -67,7 +73,38 @@ p {
 
 
 /* header */
-
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+  &.lower {
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+      text-decoration: none; 
+      color: #262626;
+      background-color: #eeeeee;
+      border-color: #428bca;
+    }
+  }
+  &.upper {
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+      text-decoration: none; 
+      color: #262626;
+      background-color: #eeeeee;
+      border-color: #428bca;
+    }
+    .dropdown .dropdown-toggle {
+      div {
+        display: block;
+      }
+      .small-admin-notific {
+        font-size: .7em;
+        position: absolute;
+        display: block;
+        line-height: 1em;
+        color: #AAA;
+      }
+    }
+  }
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -78,7 +115,7 @@ p {
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
+    color: rgb(222, 224, 242);
     text-decoration: none;
   }
 }
@@ -152,13 +189,16 @@ aside {
   margin-right: 10px;
 }
 
-.avatar {
+.avatar, .logo {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
   margin: 0 auto;
   &.avatar-size-30 {
+    height: 30px;
+  }
+  &.avatar-size-40 {
     height: 30px;
   }
   &.avatar-size-50 {
@@ -169,6 +209,10 @@ aside {
   }
   &.avatar-size-80 {
     height: 80px;
+  }
+  
+  &.header:hover {
+    @include box_shadow (0px, 0px, 4px, 2px, rgba(220,220,240,0.75));
   }
 }
 
@@ -212,15 +256,32 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, select, .uneditable-input, .btn-group.playoff {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
-input {
+input, .btn-group.playoff {
   height: auto !important;
+}
+
+input.form-control-rb {
+  display: block;
+  width: 100%;
+  height: 30px !important;
+  /* padding: 6px 12px; */
+  font-size: 14px;
+  line-height: 1.428571429;
+  margin-bottom: 15px;
+  position: relative;
+  bottom: 2px;
+}
+
+form table td {
+  padding-right: 4px;
+  border-right: 2px solid transparent;
 }
 
 #error_explanation {
@@ -265,10 +326,36 @@ input {
 }
 
 
-table.standings td
+.players {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.teams {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 5px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+
+table.standings 
 {
-  border: 8px solid transparent;
-  padding: 1px 2px;
+  //border: 8px solid transparent;
+  td { 
+    padding: 1px 2px;
+  }
+  .title {
+    background-color: rgb(199, 226, 217);
+  }
 }
 
 /* microposts */

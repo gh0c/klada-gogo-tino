@@ -1,0 +1,11 @@
+<% provide(:title, 'Players in prediction bet') %>
+<h1>All players</h1>
+
+<ul class="players">
+  <% @players.each do |player| %>
+  <%= render player %>
+  <% end %>
+</ul>
+<% if current_user.admin? %>
+  <%= link_to "Add new player!", 'players/new', class: "btn btn-lg btn-primary" %>        
+<% end %>

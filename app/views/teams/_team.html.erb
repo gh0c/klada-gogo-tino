@@ -1,0 +1,16 @@
+
+
+
+<li>
+  <%= team_logo team, size: 60 %>
+  <%= link_to team.short_name, team %>
+  <span><%= team.name %></span>
+  <span><%= team.playoff ? "yes" : "no" %></span>
+  <% if current_user.admin? %>
+    | <%= link_to "edit", edit_team_path(team) %> 
+    | <%= link_to "delete", team, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+    
+  <% end %>
+
+</li>

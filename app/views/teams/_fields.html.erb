@@ -1,0 +1,50 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<%= f.label :name %>
+<%= f.text_field :name, class: 'form-control' %>
+
+<%= f.label :short_name %>
+<%= f.text_field :short_name, class: 'form-control' %>
+
+<%= f.label :link %>
+<%= f.text_field :link, class: 'form-control' %>
+
+<%= f.label :conference %>
+<%= f.select :conference, [['Eastern', 'east'], ['Western', 'west']], {},
+  class: 'form-control' %>
+
+<table>
+  <tr>
+    <td><%= f.label :wins %></td>
+    <td><%= f.label :losses %></td>
+    <td><%= f.label :playoff %></td>
+  </tr>
+  <tr>
+    <td>
+      
+      <%= f.number_field :wins, class: 'form-control' %>
+    </td>
+    <td>
+      
+      <%= f.number_field :losses, class: 'form-control' %>      
+    </td>
+    <td>
+      
+      <%= f.check_box :playoff, class: 'form-control-rb' %>
+    </td>
+  </tr>
+</table>
+
+
+<span class="picture">
+    <%= f.file_field :logo, accept: 'image/jpeg,image/gif,image/png' %>
+</span>
+  
+<script type="text/javascript">
+  $('#team_logo').bind('change', function() {
+    size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>

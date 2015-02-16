@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'teams/index'
+
+  get 'teams/new'
+
+  get 'teams/edit'
+
+  get 'teams/show'
+
+  get 'players/new'
+
   get 'session/new'
 
   get 'users/new'
@@ -10,6 +20,8 @@ Rails.application.routes.draw do
   get 'standings' => 'static_pages#standings'
   
   get 'signup'  => 'users#new'
+  get 'players_new'  => 'players#new'
+  get 'teams_new'  => 'teams#new'
   
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -22,6 +34,8 @@ Rails.application.routes.draw do
   end
   
   resources :users
+  resources :players
+  resources :teams
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
 

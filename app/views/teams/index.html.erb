@@ -1,0 +1,11 @@
+<% provide(:title, 'Teams') %>
+<h1>NBA teams</h1>
+
+<ul class="teams">
+  <% @teams.each do |team| %>
+  <%= render team %>
+  <% end %>
+</ul>
+<% if current_user.admin? %>
+  <%= link_to "Add new team!", 'teams/new', class: "btn btn-lg btn-primary" %>        
+<% end %>

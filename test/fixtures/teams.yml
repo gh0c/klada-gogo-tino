@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  conference: MyString
+  link: MyString
+  logo: MyString
+  position: 1
+  playoff: false
+
+two:
+  name: MyString
+  conference: MyString
+  link: MyString
+  logo: MyString
+  position: 1
+  playoff: false

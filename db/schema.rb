@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213015411) do
+ActiveRecord::Schema.define(version: 20150216000153) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20150213015411) do
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
 
+  create_table "players", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "points"
+    t.string   "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -33,6 +41,20 @@ ActiveRecord::Schema.define(version: 20150213015411) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.string   "conference"
+    t.string   "link"
+    t.string   "logo"
+    t.integer  "position"
+    t.boolean  "playoff"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "wins",       default: 0
+    t.integer  "losses",     default: 0
+    t.string   "short_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

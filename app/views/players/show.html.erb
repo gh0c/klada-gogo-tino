@@ -1,0 +1,16 @@
+<% provide(:title, @player.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= avatar_for @player %>
+        <%= @player.name %>
+      </h1>
+    </section>
+    <div>
+      <span>Points: </span> 
+      <span class = "points"><%= @player.points %></span>
+    </div>
+  </aside>
+
+</div>
