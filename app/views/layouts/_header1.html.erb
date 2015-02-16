@@ -22,8 +22,9 @@
               
                 <b class="caret"></b>
               </div>
-              
+              <% if current_user.admin? %>
               <span class = "small-admin-notific">admin</span>
+              <% end %>
 
             </a>
             <ul class="dropdown-menu">
