@@ -1,11 +1,32 @@
 <% provide(:title, 'Teams') %>
 <h1>NBA teams</h1>
 
-<ul class="teams">
+<table class="teams">
+  <tr>
+    <th>
+      
+    </th>
+    <th>
+      Team
+    </th>
+    <th>
+      Conf
+    </th>
+    <th>
+      score
+    </th>
+    <th>
+      pos
+    </th>
+    <% if current_user.admin? %>
+    <th>
+    </th>
+    <% end %>
+  </tr>
   <% @teams.each do |team| %>
-  <%= render team %>
+    <%= render team %>
   <% end %>
-</ul>
+</table>
 <% if current_user.admin? %>
-  <%= link_to "Add new team!", 'teams/new', class: "btn btn-lg btn-primary" %>        
+  <%= link_to "Add new team!", 'teams/new', class: "btn adder btn-lg btn-primary" %>        
 <% end %>

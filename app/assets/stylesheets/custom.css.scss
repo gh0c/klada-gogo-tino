@@ -91,20 +91,24 @@ p {
       background-color: #eeeeee;
       border-color: #428bca;
     }
-    .dropdown .dropdown-toggle {
-      div {
-        display: block;
-      }
-      .small-admin-notific {
-        font-size: .7em;
-        position: absolute;
-        display: block;
-        line-height: 1em;
-        color: #AAA;
-      }
-    }
+    
   }
 }
+
+.user-admin-text {
+  div {
+    display: block;
+  }
+  .small-admin-notific {
+    font-size: .7em;
+    position: absolute;
+    display: block;
+    line-height: 1em;
+    color: #AAA;
+  }
+}
+    
+    
 #logo {
   float: left;
   margin-right: 10px;
@@ -213,6 +217,10 @@ aside {
   
   &.header:hover {
     @include box_shadow (0px, 0px, 4px, 2px, rgba(220,220,240,0.75));
+  }
+  &.avatar-size-std {
+    width:80px;
+    height:60px;
   }
 }
 
@@ -336,16 +344,69 @@ form table td {
   }
 }
 
-.teams {
+table.teams, table.users {
   list-style: none;
   margin: 0;
-  li {
-    overflow: auto;
-    padding: 5px 0;
-    border-bottom: 1px solid $gray-lighter;
+  th {
+    background-color: #c7e2d9;
+  }
+  .team-row, .user-row {
+    
+    td {
+      padding: 6px;
+      line-height: 1.3;
+      vertical-align: top;
+      border-top: 1px solid #ddd;
+    }
   }
 }
+    
+table.teams {    
+  .conf-avatar {
+    width: 45px;
+    height: 45px;
+    & > div {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      margin: 0 auto;
+      height: 45px;
+    }
+  }
+  
+  .avatar {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin: 0 auto;
+    
+    &.avatar-size-std {
+      width:80px;
+      height:60px;
+    }
+  }
+  
+}
 
+table.users {    
+
+    
+  .avatar {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin: 0 auto;
+    
+    &.avatar-size-std {
+      width:50px;
+      height:50px;
+    }
+  }
+
+}
 
 table.standings 
 {
@@ -356,6 +417,12 @@ table.standings
   .title {
     background-color: rgb(199, 226, 217);
   }
+}
+
+
+
+.btn .adder {
+  margin-top: 15px !important;
 }
 
 /* microposts */

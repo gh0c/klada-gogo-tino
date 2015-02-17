@@ -1,16 +1,45 @@
 
 
 
-<li>
-  <%= team_logo team, size: 60 %>
-  <%= link_to team.short_name, team %>
-  <span><%= team.name %></span>
-  <span><%= team.playoff ? "yes" : "no" %></span>
+<tr class = "team-row">
+  <td>
+    <%= team_logo team, size: 60, ct:true %>
+  </td>
+  
+  <td>
+    <div>
+      <%= link_to team.short_name, team %>
+    </div>
+    <div>
+      <span><%= team.name %></span>
+    </div>
+    <div>
+      <a href = "http://<%= team.link %>">NBA.com link</span>
+    </div>
+  </td>
+  <td>
+    <div class = "conf-avatar">
+      <div style="background-image:url('uploads/team/conference/<%= team.conference.downcase %>.gif')">
+        
+      </div>
+    </div>
+  </td>
+  <td>
+    <div><span>wins: <%= team.wins %></span></div>
+    <div><span>losses: <%= team.losses %></span></div>
+  </td>
+  <td>
+    <div><span>position: <%= team.position %> </span></div>
+    <div><span>playoff: <%= team.playoff ? "yes" : "no" %> </span></div>
+  </td>
+  
+  
   <% if current_user.admin? %>
-    | <%= link_to "edit", edit_team_path(team) %> 
-    | <%= link_to "delete", team, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-    
+  <td>
+    <div><%= link_to "edit", edit_team_path(team) %></div>
+    <div><%= link_to "delete", team, method: :delete,
+                                  data: { confirm: "You sure?" } %></div>
+  </td>
   <% end %>
 
-</li>
+</tr>

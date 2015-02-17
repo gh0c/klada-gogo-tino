@@ -21,7 +21,18 @@ class ApplicationController < ActionController::Base
     # Confirms the correct user.
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      unless current_user?(@user)
+        flash[:danger] = "U're not correct user to complete wanted action"
+        redirect_to(root_url) 
+      end
+    end
+    
+    def admin_or_correct_user
+       @user = User.find(params[:id])
+       unless current_user?(@user) || current_user.admin?
+        flash[:danger] = "Only admin or correct user can do"
+        redirect_to(root_url) 
+      end
     end
     
     # Confirms an admin user.

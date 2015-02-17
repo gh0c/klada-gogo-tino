@@ -2,7 +2,22 @@
 <h1>All users</h1>
 
 <%= will_paginate %>
-<ul class="users">
+<table class="users">
+    <tr>
+    <th>
+      
+    </th>
+    <th>
+      User
+    </th>
+    <th>
+      Email
+    </th>
+    <% if current_user.admin? %>
+    <th>
+    </th>
+    <% end %>
+  </tr>
   <%= render @users %>
-</ul>
+</table>
 <%= will_paginate %>
