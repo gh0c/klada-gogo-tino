@@ -4,6 +4,7 @@ class Team < ActiveRecord::Base
   validates :name,  presence: true, length: { maximum: 50 },
                     uniqueness: true
   validates :link,  presence: true, uniqueness: true
+  validates :short_name,  presence: true, uniqueness: true
   validates :conference,  presence: true
   
   validate  :logo_size

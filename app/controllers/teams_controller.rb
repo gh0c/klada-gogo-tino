@@ -49,7 +49,7 @@ class TeamsController < ApplicationController
 
     def teams_params
       params.require(:team).permit(:name, :short_name, :link, :conference, :logo,
-                                  :position, :playoff, :wins, :losses)
+                                  :position, :playoff, :wins, :losses, :nickname)
     end
     
 
