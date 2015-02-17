@@ -1,0 +1,41 @@
+
+
+
+<% @all_teams.each do |conf, teams| %>
+<div class = "conference">
+  <h2><%= conf %>ern conference</h2>
+  
+  <table class="team-standings">
+    <tr>
+      <th>
+        
+      </th>
+      
+      <th>
+        Team
+      </th>
+  
+      <th>
+        score
+      </th>
+    </tr>
+  
+    <% teams.each do |team| %>
+      <%= render partial:"team_stan", :locals => {:team => team}  %>
+    <% end %>
+  </table>
+</div>  
+<% end %>
+
+<div class = "update-container">
+  <form class = "update" action = "/teams/update_standings_ajax"
+        data-remote = "true" method = "post">
+    <input  type="submit" value="Update standings" 
+            class="btn btn-primary update">
+    
+  </form>
+  <span>Last update: <%= time_ago_in_words @last_update %> ago</span>
+  <div id="loading-indicator">
+   <div></div>
+  </div>
+</div>

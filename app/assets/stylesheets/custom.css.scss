@@ -51,16 +51,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.5em;
   letter-spacing: -2px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.4em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   font-weight: normal;
   color: $gray-light;
@@ -326,7 +326,8 @@ form table td {
 
 table.teams, table.users, table.team-standings {
   list-style: none;
-  margin: 0;
+  width: 70%;
+  margin: 0 auto;
   th {
     padding: 6px;
     background-color: #c7e2d9;
@@ -336,9 +337,27 @@ table.teams, table.users, table.team-standings {
     td {
       padding: 6px;
       line-height: 1.3;
-      vertical-align: top;
+      vertical-align: middle;
       border-top: 1px solid #ddd;
     }
+  }
+}
+
+table.team-standings {
+  .team-stand-row {
+    
+    td.team-position {
+      vertical-align: middle;
+    }
+    
+    td.team-info {
+      vertical-align: middle;
+      & > div {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    
   }
 }
     
@@ -384,15 +403,25 @@ table.teams {
     }
     table.team-standings {
       text-align:left;
+      width: 85%;
     }
   }
   
   div.update-container {
-    margin:0 auto;
+    margin: 25px auto 0px auto;
     text-align: center;
     
     form.update {
       text-align: center;
+    }
+    
+    #loading-indicator > div {
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      margin: 0 auto;
+      height: 19px;
+      background-image: url("/uploads/graphic_elements/ajax-loader2.gif");
     }
   }
 }

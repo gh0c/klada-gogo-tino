@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :admin_user_confirm,     only: [:new, :edit, :update, :destroy]
+  before_action :admin_user_confirm,     only: [:new, :edit, :update, :destroy,
+                                                :standings, :update_standings]
   
   def index
     @teams = Team.all
@@ -47,7 +48,7 @@ class TeamsController < ApplicationController
   
   
   def standings
-    update_standings
+    #update_standings
     
     last_updated_team = Team.limit(1).order('updated_at desc').first
     @last_update = last_updated_team.updated_at
@@ -58,6 +59,18 @@ class TeamsController < ApplicationController
  
     @all_teams = {"East" => teams_east, "West" => teams_west}
     
+  end
+  
+  
+  def update_standings_ajax
+
+    update_standings
+    standings
+    
+    respond_to do |format|
+      format.html { redirect_to standings_path }
+      format.js
+    end
   end
   
   
@@ -82,9 +95,11 @@ class TeamsController < ApplicationController
         team_name = row.css("td.team a")[0]['href'][1..-1]
         team_wins = row.css("td")[1].text.to_i
         team_losses = row.css("td")[2].text.to_i
+
+        team_playoff = ((1..8).include? row.css("td.team sup.super")[0].text.to_i) ? true : false
         
         teams[team_name] = {:pos => team_pos, :w => team_wins,
-                            :l => team_losses}
+                            :l => team_losses, :po => team_playoff } 
         
         
       elsif row.css("td.confTitle").size > 0
@@ -98,7 +113,8 @@ class TeamsController < ApplicationController
       begin 
         team.update_attributes(position: teams[team.short_name][:pos],
                                wins: teams[team.short_name][:w],
-                               losses: teams[team.short_name][:l])
+                               losses: teams[team.short_name][:l],
+                               playoff: teams[team.short_name][:po])
       rescue
         puts "error while updating for #{team.short_name}"
       end

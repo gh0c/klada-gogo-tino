@@ -2,13 +2,18 @@
 
 
 <tr class = "team-stand-row">
-  <td>
+  <td class = "team-position">
     <div>
       <%= team.position %>      
     </div>
+    
   </td>
   
-  <td>
+  <td class = "team-info">
+    <div>
+      <%= team_logo team, size: 60, ct: true, custom_size: true,
+                          cs: {:w => 20, :h => 20} %>
+    </div>
     <div>
       <%= link_to team.name, team %>
     </div>

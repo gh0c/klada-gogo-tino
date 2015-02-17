@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get '/users/:id/edit_admin_role', to: 'users#edit_admin_role', as: 'edit_admin_role_user'
   
   get 'teams/standings', to: 'teams#standings', as: 'teams_standings'
+  
+  post 'teams/update_standings_ajax', to: 'teams#update_standings_ajax'
 
   
   get    'login'   => 'sessions#new'

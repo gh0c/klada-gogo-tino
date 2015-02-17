@@ -1,43 +1,8 @@
 <% provide(:title, 'Standings') %>
 <h1>NBA standings</h1>
 
-<div class = "team-stan-container">
+<div class = "team-stan-container" id = "team-standings-container">
 
-  <div class = "update-container">
-    <form class = "update">
-      <input  type="submit" name="commit" value="Update standings" 
-              class="btn btn-primary update">
-      
-    </form>
-    <span>Last update: <%= time_ago_in_words @last_update %> ago</span>
-  </div>
-
-
-  <% @all_teams.each do |conf, teams| %>
-  <div class = "conference">
-    <h2><%= conf %>ern conference</h2>
-    
-    <table class="team-standings">
-      <tr>
-        <th>
-          
-        </th>
-        
-        <th>
-          Team
-        </th>
-    
-        <th>
-          score
-        </th>
-      </tr>
-    
-      <% teams.each do |team| %>
-        <% puts "-- #{team.name}" %>
-        <%= render partial:"team_stan", :locals => {:team => team}  %>
-      <% end %>
-    </table>
-  </div>  
-  <% end %>
+  <%= render "standings_main" %>
 
 </div>
