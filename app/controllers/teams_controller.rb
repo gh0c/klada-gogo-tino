@@ -44,6 +44,70 @@ class TeamsController < ApplicationController
       render 'edit'
     end
   end
+  
+  
+  def standings
+    update_standings
+    
+    last_updated_team = Team.limit(1).order('updated_at desc').first
+    @last_update = last_updated_team.updated_at
+    
+    
+    teams_east = Team.where("conference = ?", "east").order(:position)
+    teams_west = Team.where("conference = ?", "west").order(:position)
+ 
+    @all_teams = {"East" => teams_east, "West" => teams_west}
+    
+  end
+  
+  
+  def update_standings
+    require 'open-uri'
+    @html_standings_doc = "--None--"
+    url = "http://www.nba.com/standings/team_record_comparison/conferenceNew_Std_Cnf.html"
+    doc = Nokogiri::HTML(open(url))
+    
+    rows = doc.css("table.genStatTable tr")
+    
+    all_teams = Team.all
+    teams = Hash.new
+  
+    
+    team_pos = 0
+    
+    rows.each do |row|
+      if row.css("td.team").size > 0
+        
+        team_pos += 1
+        team_name = row.css("td.team a")[0]['href'][1..-1]
+        team_wins = row.css("td")[1].text.to_i
+        team_losses = row.css("td")[2].text.to_i
+        
+        teams[team_name] = {:pos => team_pos, :w => team_wins,
+                            :l => team_losses}
+        
+        
+      elsif row.css("td.confTitle").size > 0
+        team_pos = 0
+      end
+      
+    end
+    
+    all_teams.each do |team|
+      
+      begin 
+        team.update_attributes(position: teams[team.short_name][:pos],
+                               wins: teams[team.short_name][:w],
+                               losses: teams[team.short_name][:l])
+      rescue
+        puts "error while updating for #{team.short_name}"
+      end
+    end
+    
+ 
+
+  end
+
 
   private
 

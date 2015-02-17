@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'teams_new'  => 'teams#new'
   
   get '/users/:id/edit_admin_role', to: 'users#edit_admin_role', as: 'edit_admin_role_user'
+  
+  get 'teams/standings', to: 'teams#standings', as: 'teams_standings'
 
   
   get    'login'   => 'sessions#new'

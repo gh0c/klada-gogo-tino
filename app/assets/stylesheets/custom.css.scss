@@ -323,35 +323,15 @@ form table td {
 
 /* Users index */
 
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-}
 
-
-.players {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-}
-
-table.teams, table.users {
+table.teams, table.users, table.team-standings {
   list-style: none;
   margin: 0;
   th {
     padding: 6px;
     background-color: #c7e2d9;
   }
-  .team-row, .user-row {
+  .team-row, .user-row, .team-stand-row {
     
     td {
       padding: 6px;
@@ -391,6 +371,34 @@ table.teams {
   
 }
 
+.team-stan-container {
+  text-align: center;
+  
+  &>div.conference {
+    display:inline-block;
+    width: 46%;
+    
+    table {
+      margin: 0 auto;
+      
+    }
+    table.team-standings {
+      text-align:left;
+    }
+  }
+  
+  div.update-container {
+    margin:0 auto;
+    text-align: center;
+    
+    form.update {
+      text-align: center;
+    }
+  }
+}
+
+
+
 table.users {    
 
     
@@ -422,10 +430,19 @@ table.standings
 
 
 
-.btn .adder {
-  margin-top: 15px !important;
+
+.btn.adder {
+  margin-top: 15px;
 }
 
+
+
+input.btn {
+  &.update {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
 /* microposts */
 
 .microposts {

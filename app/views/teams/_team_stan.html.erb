@@ -1,0 +1,23 @@
+
+
+
+<tr class = "team-stand-row">
+  <td>
+    <div>
+      <%= team.position %>      
+    </div>
+  </td>
+  
+  <td>
+    <div>
+      <%= link_to team.name, team %>
+    </div>
+  </td>
+
+  <td>
+    <div><span>wins: <%= team.wins %></span></div>
+    <div><span>losses: <%= team.losses %></span></div>
+    <div><span>playoff: <%= team.playoff ? "yes" : "no" %> </span></div>
+  </td>
+
+</tr>

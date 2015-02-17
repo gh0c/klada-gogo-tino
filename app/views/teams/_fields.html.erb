@@ -21,6 +21,7 @@
     <td><%= f.label :wins %></td>
     <td><%= f.label :losses %></td>
     <td><%= f.label :playoff %></td>
+    <td><%= f.label :position %></td>
   </tr>
   <tr>
     <td>
@@ -34,6 +35,10 @@
     <td>
       
       <%= f.check_box :playoff, class: 'form-control-rb' %>
+    </td>
+    <td>
+      
+      <%= f.number_field :position, class: 'form-control' %>      
     </td>
   </tr>
 </table>
