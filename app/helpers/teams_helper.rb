@@ -14,16 +14,35 @@ module TeamsHelper
     
     if ct
       if custom_size
-        string = 
-        "<div class = 'avatar avatar-size-custom'"+
-        "style = 'background-image:url(\"#{team.logo.url}\");" +
-        "width:#{cs[:w]}px; height:#{cs[:h]}px;'></div>"
-        return string.html_safe
+        if (team.logo?)
+          string = 
+          "<div class = 'avatar avatar-size-custom'"+
+          "style = 'background-image:url(\"#{team.logo.url}\");" +
+          "width:#{cs[:w]}px; height:#{cs[:h]}px;'></div>"
+          return string.html_safe
+               
+        else
+          string = 
+          "<div class = 'avatar avatar-size-custom'"+
+          "style = 'background-image:url(\"/uploads/team/picture/nba-logo.jpg\");" +
+          "width:#{cs[:w]}px; height:#{cs[:h]}px;'></div>"
+          return string.html_safe
+        end
+        
       else
-        string = 
-        "<div class = 'avatar avatar-size-std'"+
-        "style = 'background-image:url(\"#{team.logo.url}\")'></div>"
-        return string.html_safe
+        if (team.logo?)
+          string = 
+          "<div class = 'avatar avatar-size-std'"+
+          "style = 'background-image:url(\"#{team.logo.url}\")'></div>"
+          return string.html_safe
+               
+        else
+          string = 
+          "<div class = 'avatar avatar-size-std'"+
+          "style = 'background-image:url(\"/uploads/team/picture/nba-logo.jpg\")'></div>"
+          return string.html_safe
+        end
+        
       end
     
     else
