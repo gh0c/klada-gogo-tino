@@ -1,24 +1,33 @@
 
 <li class = "micropost" id="micropost-<%= micropost.id %>">
-  <div class = "micropost-header"></div>
-  <div class = "avatar-container">
-    <a href = "users/<%= micropost.user.id %>">
-      <%= avatar_for  micropost.user, size:50, ct:true, custom_size:true,
-                     cs: {:w => 60, :h => 43} %>
-      
-    </a>
-    
-  </div>
-  <div>
-    <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-    <span class="content"><%= micropost.content %></span>
-    <span class="timestamp">
-      Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-      <% if current_user?(micropost.user) %>
-        <%= link_to "delete", micropost, method: :delete,
-                                         data: { confirm: "You sure?" } %>
-      <% end %>
-    </span>
-  </div>
   
+  <div class = "micropost-header"></div>
+  
+  <table>
+    <tr>
+      <td>
+        <div class = "avatar-container">
+          <a href = "users/<%= micropost.user.id %>">
+            <%= avatar_for  micropost.user, size:50, ct:true, custom_size:true,
+                           cs: {:w => 60, :h => 43} %>
+            
+          </a>
+        </div>
+      </td>
+      <td>
+        <div>
+          <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+          <span class="content"><%= micropost.content %></span>
+          <span class="timestamp">
+            Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+            <% if current_user?(micropost.user) %>
+              <%= link_to "delete", micropost, method: :delete,
+                                               data: { confirm: "You sure?" } %>
+            <% end %>
+          </span>
+        </div>
+      </td>
+    </tr>
+  </table>
+
 </li>
