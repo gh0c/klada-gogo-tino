@@ -209,6 +209,11 @@ aside {
   }
 }
 
+.col-md-6 {
+  form {
+    text-align: center;
+  }
+}
 .col-md-8 {
   width: 54%;
   #follow_form {
@@ -353,7 +358,8 @@ form table td {
 /* Users index */
 
 
-table.teams, table.users, table.team-standings {
+table.teams, table.users, table.team-standings,
+table.players, table.predictions {
   list-style: none;
   width: 70%;
   margin: 0 auto;
@@ -361,7 +367,8 @@ table.teams, table.users, table.team-standings {
     padding: 6px;
     background-color: #c7e2d9;
   }
-  .team-row, .user-row, .team-stand-row {
+  .team-row, .user-row, .team-stand-row,
+  .player-row, .prediction-row {
     
     td {
       padding: 6px;
@@ -419,7 +426,7 @@ table.teams {
   
 }
 
-.team-stan-container {
+.team-stan-container, .predictions-cont {
   text-align: center;
   
   &>div.conference {
@@ -430,7 +437,7 @@ table.teams {
       margin: 0 auto;
       
     }
-    table.team-standings {
+    table.team-standings, table.predictions {
       text-align:left;
       width: 85%;
     }
@@ -472,8 +479,50 @@ table.users {
       height:50px;
     }
   }
-
 }
+
+table.players {    
+
+    
+  .avatar {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin: 0 auto;
+    
+    &.avatar-size-std {
+      width:50px;
+      height:50px;
+    }
+  }
+}
+
+table.predictions {    
+
+    
+  .avatar {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin: 0 auto;
+    
+    &.avatar-size-std {
+      width:50px;
+      height:50px;
+    }
+  }
+  
+  .prediction-row {
+    .team-in-prediction-container {
+      & > div {
+        display: inline-block;
+      }
+    }
+  }
+}
+
 
 table.standings 
 {
@@ -488,10 +537,13 @@ table.standings
 
 
 
-
-.btn.adder {
-  margin-top: 15px;
+.adder-cont {
+  text-align: center;
+  .btn.adder {
+    margin-top: 30px;
+  }  
 }
+
 
 
 

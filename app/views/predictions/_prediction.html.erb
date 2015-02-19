@@ -1,0 +1,39 @@
+
+<% team = Team.find(prediction.team_id) %>
+<tr class = "prediction-row">
+  <td>
+    
+      <%= team_logo team, size: 50, ct: true, 
+                          custom_size: true, cs: {:w => 40, :h => 35} %>
+    
+  </td>
+  
+  <td>
+    <div>
+      <span><%= team.name %></span>
+    </div>
+  </td>
+  
+  <td>
+    <div><span><%= prediction.position %></span></div>
+  </td>
+  
+  <td>
+    <div><span><%= prediction.playoff ? "yes" : "no" %></span></div>
+  </td>
+  
+  <td>
+    <div><span><%= prediction.wins %></span></div>
+    <div><span><%= prediction.losses %></span></div>
+  </td>
+  
+  <% if current_user.admin? %>
+    <td>
+      <div><%= link_to "edit", edit_prediction_path(prediction) %></div>
+      <div><%= link_to "delete", prediction, method: :delete,
+                                  data: { confirm: "You sure?" } %></div>
+ 
+    </td>
+  <% end %>
+
+</tr>

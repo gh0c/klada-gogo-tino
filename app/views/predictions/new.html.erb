@@ -1,0 +1,11 @@
+<% provide(:title, 'Add prediction') %>
+<h1>Add new prediction</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@prediction, html: { multipart: true }) do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit "Create prediction", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

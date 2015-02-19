@@ -1,11 +1,31 @@
 <% provide(:title, 'Players in prediction bet') %>
 <h1>All players</h1>
 
-<ul class="players">
+<table class="players">
+  <tr>
+    <th>
+      
+    </th>
+    
+    <th>
+      Player
+    </th>
+    <th>
+      Pts
+    </th>
+    <% if current_user.admin? %>
+    <th>
+    </th>
+    <% end %>
+  </tr>
   <% @players.each do |player| %>
-  <%= render player %>
+    <%= render player %>
   <% end %>
-</ul>
+</table>
+
 <% if current_user.admin? %>
-  <%= link_to "Add new player!", 'players/new', class: "btn btn-lg btn-primary" %>        
+<div class = "adder-cont">
+  <%= link_to "Add new player!", 'players/new', class: "btn adder btn-lg btn-primary" %>     
+</div>
 <% end %>
+  

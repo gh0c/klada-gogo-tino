@@ -1,9 +1,10 @@
 
 
 
-<tr class = "team-row">
+<tr class = "user-row">
   <td>
-    <%= avatar_for user, size: 50 %>
+    <%= avatar_for user,  size: 50, ct: true, 
+                          custom_size: true, cs: {:w => 80, :h => 65} %>
   </td>
   
   <td>
@@ -20,7 +21,7 @@
   </td>
 
   <td>
-    <div><span>wins: <%= user.email %></span></div>
+    <div><span><%= user.email %></span></div>
 
   </td>
 

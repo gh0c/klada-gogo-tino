@@ -12,6 +12,10 @@ class Prediction < ActiveRecord::Base
   validates :losses, :inclusion => { :in => 0..82, :message => " should be between 0 to 82" }
   validates :losses, :presence => { :message => " cannot be blank" }
   
+  
+  validates :player_id, :uniqueness => { 
+    :scope => :team_id, :message => " already exists same prediction" }
+  
   validate :sum_of_wins_losses
   validates :conference,  presence: true
 
@@ -19,10 +23,12 @@ class Prediction < ActiveRecord::Base
   
   
   private
+  
     def sum_of_wins_losses
-      if !(wins + losses == 82)
+      if (wins && losses) && !(wins + losses == 82)
           errors.add(:base, "number of wins added to losses should be 82")
       end
+      
     end
     
     def conferences_east_west
@@ -30,5 +36,6 @@ class Prediction < ActiveRecord::Base
           errors.add(:conference, "should be either East or West")
       end
     end
+
   
 end

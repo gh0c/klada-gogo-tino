@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   
   get '/users/:id/edit_admin_role', to: 'users#edit_admin_role', as: 'edit_admin_role_user'
   
+  get '/players/:player_id/predictions/new', to: 'predictions#new', as: 'add_prediction_to_player'
+  
+  get '/players/:player_id/predictions', to: 'players#predictions', as: 'player_predictions'
+  
   get 'teams/standings', to: 'teams#standings', as: 'teams_standings'
   
   post 'teams/update_standings_ajax', to: 'teams#update_standings_ajax'
@@ -45,6 +49,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+  resources :predictions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

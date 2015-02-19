@@ -28,5 +28,7 @@
   <% end %>
 </table>
 <% if current_user.admin? %>
-  <%= link_to "Add new team!", 'teams/new', class: "btn adder btn-lg btn-primary" %>        
+<div class = "adder-cont">
+  <%= link_to "Add new team!", 'teams/new', class: "btn adder btn-lg btn-primary" %>    
+</div>
 <% end %>

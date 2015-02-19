@@ -21,6 +21,16 @@ class PlayersController < ApplicationController
   end
   
   
+  def predictions
+    @player = Player.find(params[:player_id])
+    
+    teams_east = @player.predictions.where("conference = ?", "east").order(:position)
+    teams_west = @player.predictions.where("conference = ?", "west").order(:position)
+ 
+    @player_predictions = {"East" => teams_east, "West" => teams_west}
+  end
+  
+  
   def create
     @player = Player.new(player_params)
     if @player.save

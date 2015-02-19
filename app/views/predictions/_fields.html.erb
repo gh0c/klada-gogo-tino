@@ -1,0 +1,38 @@
+<%= render 'shared/error_messages', object: f.object %>
+
+<%= f.label "Player" %>
+<%= f.hidden_field :player_id, :value => @player.id%>
+<%= text_field_tag :player_name,  @player.name,
+  {class: 'form-control', readonly: 'true'} %>
+
+<%= f.label "Team" %>
+<%= f.collection_select(:team_id, Team.all.order(:conference),
+                        :id, :name, {}, class: 'form-control')%>
+
+<table>
+  <tr>
+    <td><%= f.label :wins %></td>
+    <td><%= f.label :losses %></td>
+    <td><%= f.label :playoff %></td>
+    <td><%= f.label :position %></td>
+  </tr>
+  <tr>
+    <td>
+      
+      <%= f.number_field :wins, class: 'form-control' %>
+    </td>
+    <td>
+      
+      <%= f.number_field :losses, class: 'form-control' %>      
+    </td>
+    <td>
+      
+      <%= f.check_box :playoff, class: 'form-control-rb' %>
+    </td>
+    <td>
+      
+      <%= f.number_field :position, class: 'form-control' %>      
+    </td>
+  </tr>
+</table>
+

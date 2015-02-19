@@ -1,0 +1,49 @@
+<% provide(:title, "#{@player.name}s predictions") %>
+<h1><%= @player.name %>'s predictions</h1>
+
+
+<% if @player_predictions.size > 0 %>
+<div class = "predictions-cont">
+  <% @player_predictions.each do |conf, predictions| %>
+  <div class = "conference">
+    <h2><%= conf %>ern conference</h2>
+    
+    <table class="predictions">
+      <tr>
+        <th colspan="2">
+          Team
+        </th>
+        <th>
+          Pos
+        </th>
+        <th>
+          PO
+        </th>
+        <th>
+          Score
+        </th>
+        <% if current_user.admin? %>
+        <th>
+        </th>
+        <% end %>
+      </tr>
+      <% predictions.each do |prediction| %>
+        <%= render prediction %>
+      <% end %>
+    </table>
+  </div>
+
+  <% end %>
+  
+</div>
+<% end %>
+
+<% if current_user.admin? %>
+<div class = "adder-cont">
+  
+
+  <%= link_to "Add new prediction!", "/players/#{@player.id}/predictions/new",
+      class: "btn adder btn-lg btn-primary" %>
+</div>
+<% end %>
+  
