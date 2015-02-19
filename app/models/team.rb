@@ -23,7 +23,7 @@ class Team < ActiveRecord::Base
     end
     
     def conferences_east_west
-      if !(['east', 'west'].include? conference.downcase)
+      if !(conference && (['east', 'west'].include? conference.downcase))
           errors.add(:conference, "should be either East or West")
       end
     end

@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
-
+  
+  has_many :predictions, dependent: :destroy, :inverse_of => :player
   
   mount_uploader :picture, PictureUploader
 

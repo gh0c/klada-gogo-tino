@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217002152) do
+ActiveRecord::Schema.define(version: 20150219003550) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -30,6 +30,21 @@ ActiveRecord::Schema.define(version: 20150217002152) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "predictions", force: :cascade do |t|
+    t.integer  "position"
+    t.boolean  "playoff"
+    t.integer  "wins"
+    t.integer  "losses"
+    t.integer  "player_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "conference"
+  end
+
+  add_index "predictions", ["player_id"], name: "index_predictions_on_player_id"
+  add_index "predictions", ["team_id"], name: "index_predictions_on_team_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
