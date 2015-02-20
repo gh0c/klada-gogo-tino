@@ -1,6 +1,8 @@
 class PlayersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :admin_user_confirm,     only: [:new, :edit, :update, :destroy]
+  before_action :update_players_points
+  
   
   def index
     @players = Player.all
@@ -31,6 +33,12 @@ class PlayersController < ApplicationController
   end
   
   
+  def bets
+    #update_standings
+    predictions
+  end
+  
+  
   def create
     @player = Player.new(player_params)
     if @player.save
@@ -40,6 +48,7 @@ class PlayersController < ApplicationController
       render 'new'
     end
   end
+  
   
   def edit
     @player = Player.find(params[:id])
@@ -61,6 +70,5 @@ class PlayersController < ApplicationController
       params.require(:player).permit(:name, :points, :picture)
     end
     
-
  
 end

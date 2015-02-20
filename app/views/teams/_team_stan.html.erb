@@ -22,7 +22,12 @@
   <td>
     <div><span>wins: <%= team.wins %></span></div>
     <div><span>losses: <%= team.losses %></span></div>
-    <div><span>playoff: <%= team.playoff ? "yes" : "no" %> </span></div>
+  </td>
+  
+  <td>
+    <% playoff_pic = team.playoff ? "green-tick" : "yellow-x" %>
+    <%= picture_for "/uploads/graphic_elements/#{playoff_pic}.png",
+                      custom_size: true, cs: {:w => 20, :h => 20} %>
   </td>
 
 </tr>

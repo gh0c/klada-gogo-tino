@@ -1,0 +1,42 @@
+<% provide(:title, "#{@player.name}s bets") %>
+<h2><%= @player.name %>'s bets</h2>
+<h3>Total points: <%= @player.points %></h3>
+
+
+<% if @player_predictions.size > 0 %>
+<div class = "predictions-cont">
+  <% @player_predictions.each do |conf, predictions| %>
+  <div class = "conference">
+    <h3><%= conf %>ern conference</h3>
+    
+    <table class="bets">
+      <tr>
+        <th colspan="2">
+          Team
+        </th>
+        <th colspan = "6">
+          Prediction / Standings
+        </th>
+        <th>
+          Pts
+        </th>
+      </tr>
+      <% @total_conf_pts = 0 %>
+      <% predictions.each do |prediction| %>
+        <%= render partial:"predictions/bet", :locals => 
+          {:prediction => prediction} %>
+      <% end %>
+    </table>
+    
+    <div class = "conf-pts-container">
+      <span>Conf pts: <%= @total_conf_pts%></span>
+    </div>  
+  </div>
+
+
+  <% end %>
+  
+</div>
+<% end %>
+
+  

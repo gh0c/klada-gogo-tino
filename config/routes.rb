@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/players/:player_id/predictions/new', to: 'predictions#new', as: 'add_prediction_to_player'
   
   get '/players/:player_id/predictions', to: 'players#predictions', as: 'player_predictions'
+  get '/players/:player_id/bets', to: 'players#bets', as: 'player_bets'
   
   get 'teams/standings', to: 'teams#standings', as: 'teams_standings'
   

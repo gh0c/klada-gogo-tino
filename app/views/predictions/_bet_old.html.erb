@@ -1,0 +1,40 @@
+
+
+<tr class = "prediction-row">
+  <td>
+    
+      <%= team_logo team, size: 50, ct: true, 
+                          custom_size: true, cs: {:w => 45, :h => 38} %>
+    
+  </td>
+  
+  <td>
+    <div>
+      <span><%= team.name %></span>
+    </div>
+  </td>
+  
+  <td colspan = "6">
+    <table class = "bets">
+      <tr>
+        <td>Pred's:</td>
+        <td><%= prediction.position %></td>
+      </tr>
+      <tr>
+        <td>Stand's:</td>
+        <td><%= team.position %></td>
+        <%
+          if prediction.position == team.position
+            points += 1
+          end
+        %>
+      </tr>
+    </table>
+  </td>
+
+  
+  <td>
+    <div><span><%= points %></span></div>
+  </td>
+
+</tr>

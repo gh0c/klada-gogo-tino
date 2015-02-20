@@ -17,12 +17,15 @@
       <span>points: <%=  player.points %></span>
     </div>
   </td>
-
+  <td>
+    <div><%= link_to "Predictions", player_predictions_path(player) %></div>
+    <div><span><%= player.predictions.count %> predictions</span></div>
+  </td>
   
   <% if current_user.admin? %>
   <td>
     <div><%= link_to "edit", edit_player_path(player) %></div>
-    <div><%= link_to "predictions", player_predictions_path(player) %></div>
+    
     <div><%= link_to "delete", player, method: :delete,
                                   data: { confirm: "You sure?" } %></div>
   </td>

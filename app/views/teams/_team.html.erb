@@ -3,7 +3,8 @@
 
 <tr class = "team-row">
   <td>
-    <%= team_logo team, size: 60, ct:true %>
+    <%= team_logo team, size: 60, ct: true, custom_size: true,
+                          cs: {:w => 45, :h => 35} %>
   </td>
   
   <td>
@@ -13,11 +14,16 @@
     <div>
       <span><%= team.name %></span>
     </div>
+    
+  </td>
+  
+  <td>
     <div>
       <a href = "http://<%= team.link %>"
-         title = "<%= team.short_name %>">NBA.com link</a>
+         title = "<%= team.short_name %>"><%= team.short_name %></a>
     </div>
   </td>
+  
   <td>
     <div class = "conf-avatar">
       <div style="background-image:url('uploads/team/conference/<%= team.conference.downcase %>.gif')">

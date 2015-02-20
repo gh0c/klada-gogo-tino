@@ -1,0 +1,78 @@
+
+<% team = Team.find(prediction.team_id) %>
+<% points = 0 %>
+
+
+<tr class = "bet-row">
+  <td rowspan = "2">
+    <%= team_logo team, size: 50, ct: true, 
+                          custom_size: true, cs: {:w => 40, :h => 32} %>
+  </td>
+  
+  <td class = "left-align" rowspan = "2">
+    <div>
+      <span><%= team.name %></span>
+    </div>
+  </td>
+  <td class = "left-align">
+    <span></span>
+  </td>
+  <td class = "left-align">
+    <span><%= prediction.position.ordinalize %></span>
+  </td>
+  <%
+    if prediction.position == team.position
+      points += 1
+    end
+  %>
+  <td class = "left-align">
+    <span><%= prediction.playoff %></span>
+  </td>
+  <%
+    if prediction.playoff == true && team.playoff == true
+      points += 1
+    end
+  %>
+  <td class = "center">
+    <span><%= prediction.wins %></span>
+  </td>
+  <td class = "center dash">
+    <span>-</span>
+  </td>
+  <td class = "center">
+    <span><%= prediction.losses %></span>
+  </td>
+  <%
+    if prediction.wins == team.wins && team.losses == team.losses
+      points += 3
+    end
+  %>
+  
+  <td rowspan = "2">
+    <div><span><%= points %></span></div>
+  </td>
+</tr>
+
+
+<tr class = "bet-row-lower">
+  <td class = "left-align">
+    <span></span>
+  </td>
+  <td class = "left-align">
+    <span><%= team.position.ordinalize %></span>
+  </td>
+  <td class = "left-align">
+    <span><%= team.playoff %></span>
+  </td>
+  <td class = "center">
+    <span><%= team.wins %></span>
+  </td>
+  <td class = "center dash">
+    <span>-</span>
+  </td>
+  <td class = "center">
+    <span><%= prediction.losses %></span>
+  </td>
+</tr>
+
+<% @total_conf_pts += points %>

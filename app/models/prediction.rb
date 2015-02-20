@@ -14,7 +14,11 @@ class Prediction < ActiveRecord::Base
   
   
   validates :player_id, :uniqueness => { 
-    :scope => :team_id, :message => " already exists same prediction" }
+    :scope => :team_id, :message => " - already exists prediction for this team" }
+  validates :position, :uniqueness => {
+    :scope => [:player_id, :conference], 
+    :message => " already taken in some other prediction for this conferece"
+  }
   
   validate :sum_of_wins_losses
   validates :conference,  presence: true

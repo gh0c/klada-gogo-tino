@@ -44,6 +44,10 @@ textarea {
   }
 }
 
+.left-align {
+  text-align: left;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 2.3em;
   letter-spacing: -2px;
   margin-bottom: 20px;
   text-align: center;
@@ -61,6 +65,16 @@ h2 {
   font-size: 1.4em;
   letter-spacing: -1px;
   margin-bottom: 20px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h3 {
+  font-size: 1.1em;
+
+  margin-bottom: 10px;
+  margin-top: 10px;
   text-align: center;
   font-weight: normal;
   color: $gray-light;
@@ -258,6 +272,18 @@ aside {
   }
 }
 
+.picture {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  margin: 0 auto;
+  
+  &.picture-size-std {
+    width:60px;
+    height:50px;
+  }
+}
 
 .navbar-nav > li > a.header-avatar {
   padding-top: 10px;
@@ -364,14 +390,14 @@ table.players, table.predictions {
   width: 70%;
   margin: 0 auto;
   th {
-    padding: 6px;
+    padding: 4px 6px;
     background-color: #c7e2d9;
   }
   .team-row, .user-row, .team-stand-row,
   .player-row, .prediction-row {
     
-    td {
-      padding: 6px;
+    & > td {
+      padding: 4px 6px;
       line-height: 1.3;
       vertical-align: middle;
       border-top: 1px solid #ddd;
@@ -399,15 +425,15 @@ table.team-standings {
     
 table.teams {    
   .conf-avatar {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     & > div {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       position: relative;
       margin: 0 auto;
-      height: 45px;
+      height: 35px;
     }
   }
   
@@ -431,7 +457,9 @@ table.teams {
   
   &>div.conference {
     display:inline-block;
-    width: 46%;
+    width: 48%;
+    vertical-align: top;
+    
     
     table {
       margin: 0 auto;
@@ -441,6 +469,13 @@ table.teams {
       text-align:left;
       width: 85%;
     }
+    
+    
+    .conf-pts-container {
+      margin-top:10px;
+      background-color: #c7e2d9;
+    }
+    
   }
   
   div.update-container {
@@ -521,7 +556,43 @@ table.predictions {
       }
     }
   }
+  
 }
+
+
+table.bets {
+  list-style: none;
+  width: 87%;
+  margin: 0 auto;
+  th {
+    padding: 4px 6px;
+    background-color: #c7e2d9;
+  }
+  
+  .bet-row {
+    & > td {
+      padding: 3px 6px;
+      line-height: 1.1;
+      vertical-align: middle;
+      border-top: 1px solid #ddd;
+      &.dash {
+        padding: 3px 1px;
+      }
+    }
+  }
+  .bet-row-lower {
+    & > td {
+      padding: 3px 6px;
+      line-height: 1.1;
+      vertical-align: middle;
+      &.dash {
+        padding: 3px 1px;
+      }
+    }
+  }
+}
+  
+
 
 
 table.standings 
