@@ -1,16 +1,37 @@
 <% provide(:title, @player.name) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
+    <section >
       <h1>
-        <%= avatar_for @player %>
+        
         <%= @player.name %>
       </h1>
+      <%= picture_for @player.picture.url, custom_size: true, 
+                      cs: {:w => 120, :h => 80} %>
     </section>
     <div>
       <span>Points: </span> 
       <span class = "points"><%= @player.points %></span>
     </div>
+    
+    <section>
+      <div>
+        <div><%= link_to "Bets", player_bets_path(@player) %></div>
+        <div><%= link_to "Predictions", player_predictions_path(@player) %></div>
+      </div>
+    </section>
   </aside>
+  
+  <% if current_user.admin? %>
+  <aside class="col-md-4">
+    <section>
+          <div><%= link_to "edit", edit_player_path(@player) %></div>
+    
+          <div><%= link_to "delete", @player, method: :delete,
+                                  data: { confirm: "You sure?" } %></div>
+    </section>
+
+  </aside>
+  <% end %>
 
 </div>

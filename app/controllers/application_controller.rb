@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
         if prediction.playoff == true && team.playoff == true
           points += 1
         end
-        if prediction.wins == team.wins && team.losses == team.losses
+        if prediction.wins == team.wins && prediction.losses == team.losses
           points += 3
         end
         total_pts += points 
@@ -99,8 +99,8 @@ class ApplicationController < ActionController::Base
     end
     
     def admin_or_correct_user
-       @user = User.find(params[:id])
-       unless current_user?(@user) || current_user.admin?
+      @user = User.find(params[:id])
+      unless current_user?(@user) || current_user.admin?
         flash[:danger] = "Only admin or correct user can do"
         redirect_to(root_url) 
       end

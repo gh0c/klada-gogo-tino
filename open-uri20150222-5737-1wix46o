@@ -53,7 +53,7 @@
 <a href="#nbaAssistSkip" class="nbaAssist" title="Skip the NBA site header and navigation. Jump to the main content.">Skip to main content</a>
 <div class="nbaPage">
 <script type="text/javascript">
-		var nbaCurrTime = new Date(1424595602142);
+		var nbaCurrTime = new Date(1424597040706);
 		var nbaCurrHour = 4;
 		</script>
 <!-- begin header include -->
