@@ -1,0 +1,40 @@
+
+<table class="bet-standings">
+  <tr>
+    <th>
+      
+    </th>
+    <% @teams.each do |team| %>
+      <th>
+        <%= team_logo team, size: 60, ct: true, custom_size: true,
+                          cs: {:w => 20, :h => 20} %>
+      </th>
+    <% end %>
+    <th>
+      Pts
+    </th>
+  </tr>
+  <% @players_points.each do |player_points| %>
+    <%= render partial:"player_pts", :locals => 
+          {:player_points => player_points} %>
+  <% end %>
+  
+</table>
+
+<div class = "update-container">
+  <form class = "update" action = "/update_all_standings"
+        data-remote = "true" method = "post">
+    <input  type="submit" value="Update standings" 
+            class="btn btn-primary update">
+    
+  </form>
+  <span>Last update:</span></br>
+  <span>Teams: <%= time_ago_in_words @last_updated_team %> ago</span></br>
+  <span>Players: <%= time_ago_in_words @last_updated_player %> ago</span>
+  <div id="loading-indicator">
+   <div></div>
+  </div>
+  <script >
+    $('#loading-indicator').hide();  // hide it initially.
+  </script>
+</div>

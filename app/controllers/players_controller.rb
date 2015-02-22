@@ -1,20 +1,23 @@
 class PlayersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :admin_user_confirm,     only: [:new, :edit, :update, :destroy]
-  before_action :update_players_points
+  #before_action :update_players_points
   
   
   def index
     @players = Player.all
   end
   
+  
   def show
     @player = Player.find(params[:id])
   end
 
+
   def new
     @player = Player.new
   end
+  
   
   def destroy
     Player.find(params[:id]).destroy
@@ -54,6 +57,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
   end
   
+  
   def update
     @player = Player.find(params[:id])
     if @player.update_attributes(player_params)
@@ -63,6 +67,7 @@ class PlayersController < ApplicationController
       render 'edit'
     end
   end
+
 
   private
 

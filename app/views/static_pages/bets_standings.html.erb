@@ -1,24 +1,9 @@
 <% provide(:title, 'Bet standings') %>
 <h1>Bet standings</h1>
 
-<table class="bet-standings">
-  <tr>
-    <th>
-      
-    </th>
-    <% @teams.each do |team| %>
-      <th>
-        <%= team_logo team, size: 60, ct: true, custom_size: true,
-                          cs: {:w => 20, :h => 20} %>
-      </th>
-    <% end %>
-    <th>
-      Pts
-    </th>
-  </tr>
-  <% @players_points.each do |player_points| %>
-    <%= render partial:"player_pts", :locals => 
-          {:player_points => player_points} %>
-  <% end %>
-  
-</table>
+
+<div class = "bet-stan-container" id = "bet-standings-container">
+
+  <%= render "bets_standings_main" %>
+
+</div>

@@ -36,19 +36,19 @@
     end
   %>
   <td class = "center
-      <%= (prediction.wins == team.wins && team.losses == team.losses)? 'correct' : '' %>">
+      <%= (prediction.wins == team.wins && prediction.losses == team.losses)? 'correct' : '' %>">
     <span><%= prediction.wins %></span>
   </td>
   <td class = "center dash 
-      <%= (prediction.wins == team.wins && team.losses == team.losses)? 'correct' : '' %>">
+      <%= (prediction.wins == team.wins && prediction.losses == team.losses)? 'correct' : '' %>">
     <span>-</span>
   </td>
   <td class = "center
-      <%= (prediction.wins == team.wins && team.losses == team.losses)? 'correct' : '' %>">
+      <%= (prediction.wins == team.wins && prediction.losses == team.losses)? 'correct' : '' %>">
     <span><%= prediction.losses %></span>
   </td>
   <%
-    if prediction.wins == team.wins && team.losses == team.losses
+    if prediction.wins == team.wins && prediction.losses == team.losses
       points += 3
     end
   %>
@@ -72,15 +72,15 @@
     <span><%= (team.playoff)? 'playoff' : 'out' %></span>
   </td>
   <td class = "center
-      <%= (prediction.wins == team.wins && team.losses == team.losses)? 'correct' : '' %>">
+      <%= (prediction.wins == team.wins && prediction.losses == team.losses)? 'correct' : '' %>">
     <span><%= team.wins %></span>
   </td>
   <td class = "center dash
-      <%= (prediction.wins == team.wins && team.losses == team.losses)? 'correct' : '' %>">
+      <%= (prediction.wins == team.wins && prediction.losses == team.losses)? 'correct' : '' %>">
     <span>-</span>
   </td>
   <td class = "center
-      <%= (prediction.wins == team.wins && team.losses == team.losses)? 'correct' : '' %>">
+      <%= (prediction.wins == team.wins && prediction.losses == team.losses)? 'correct' : '' %>">
     <span><%= team.losses %></span>
   </td>
 </tr>
