@@ -1,6 +1,6 @@
 
 <% team = Team.find(prediction.team_id) %>
-<tr class = "prediction-row">
+<tr class = "prediction-row" id = "pred-<%= prediction.id %>">
   <td>
     
       <%= team_logo team, size: 50, ct: true, 

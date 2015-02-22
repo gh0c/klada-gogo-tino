@@ -1,4 +1,4 @@
-<% provide(:title, 'Players in prediction bet') %>
+<% provide(:title, 'Players in bet') %>
 <h1>All players</h1>
 
 <table class="players">
@@ -15,6 +15,9 @@
     </th>
     <th>
       Bets
+    </th>
+    <th>
+      Predictions
     </th>
     <% if current_user.admin? %>
     <th>

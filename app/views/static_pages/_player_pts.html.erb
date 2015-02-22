@@ -1,0 +1,30 @@
+<tr class = "bet-stand-row">
+
+  <% player_id = player_points[0].id %>
+  <td>
+    <div>
+      <a href = "players/<%= player_id %>">
+        <%= picture_for player_points[0].picture.url, custom_size:true,
+                       cs: {:w => 60, :h => 43} %>
+        
+      </a>
+    </div>
+  </td>
+
+  <% @teams.each do |team| %>
+    <td class = "center">
+      <% pred = player_points[1][team.short_name] %>
+      <% if pred %>
+      <a href = "players/<%= player_id %>/bets#pred-<%= pred[:prediction] %>"
+         target = "_blank">
+        <%= pred[:points] %>
+      </a>
+      <% end %>
+    </td>
+  <% end %>
+  <td>
+    <div><span><%= player_points[0].points %></span></div>
+  </td>
+  
+
+</tr>

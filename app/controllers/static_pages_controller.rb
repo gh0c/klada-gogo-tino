@@ -33,4 +33,36 @@ class StaticPagesController < ApplicationController
     
     @html_standings_doc = doc2.at('table').inner_html.html_safe
   end
+  
+  def bets_standings
+    @teams = Team.all.order(conference: :asc, position: :asc)
+    players = Player.all.order(points: :desc)
+    @players_points = []
+    players.each do |player|
+      bets = {}
+      total_pts = 0
+      player.predictions.each do |prediction|
+        team = Team.find(prediction.team_id)
+        points = 0
+        if prediction.position == team.position
+          points += 1
+        end
+        if prediction.playoff == true && team.playoff == true
+          points += 1
+        end
+        if prediction.wins == team.wins && team.losses == team.losses
+          points += 3
+        end
+        bets[team.short_name] = {:points => points, :prediction => prediction.id}
+        total_pts += points 
+      end
+      #player.update_attributes(points: total_pts)
+      @players_points << [player, bets]
+    end
+    
+    puts @player_points
+  end
+  
+  
 end
+
